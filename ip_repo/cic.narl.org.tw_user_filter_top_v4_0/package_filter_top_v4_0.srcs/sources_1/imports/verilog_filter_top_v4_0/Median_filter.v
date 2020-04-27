@@ -139,19 +139,19 @@ reg          [CV*DBITS-1:0] Com_result;
 
 always @(posedge CLK)
 begin
-	if ( FIRST > SECOND > THIRD ) begin
+	if ( (FIRST > SECOND) && (SECOND > THIRD )) begin
 		Com_result <= { FIRST, SECOND, THIRD };	
 	end
-	else if ( FIRST > THIRD > SECOND ) begin 
+	else if (( FIRST > THIRD ) && (THIRD > SECOND )) begin 
 		Com_result <= { FIRST, THIRD, SECOND };	
 	end
-	else if ( SECOND > FIRST > THIRD ) begin
+	else if (( SECOND > FIRST) && (FIRST  > THIRD ) )begin
 		Com_result <= { SECOND, FIRST, THIRD };
 	end
-	else if ( SECOND > THIRD > FIRST ) begin
+	else if (( SECOND > THIRD) && (THIRD  > FIRST )) begin
 		Com_result <= { SECOND, THIRD, FIRST };
 	end
-	else if ( THIRD > FIRST > SECOND ) begin
+	else if (( THIRD > FIRST ) && (FIRST > SECOND )) begin
 		Com_result <= { THIRD, FIRST, SECOND };	
 	end
 	else begin
